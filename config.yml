@@ -1,0 +1,14 @@
+version: 2
+  commit-workflow:
+    jobs:
+      - build 
+  scheduled-workflow:
+    triggers:
+      - schedule:
+          cron: "* * * * *"
+          filters:
+            branches:
+              only: try-schedule-workflow
+
+    jobs:
+      - build
